@@ -1,0 +1,147 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.8s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+.quiz-selection button,
+#next-btn,
+#restart-btn,
+#menu-btn {
+  background: #ff7eb3;
+  border: none;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  display: inline-block;
+}
+
+.quiz-selection button:hover,
+#next-btn:hover,
+#restart-btn:hover,
+#menu-btn:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(to right, #667eea, #764ba2);
+  color: black;
+}
+
+#question-container {
+  margin: 20px 0;
+}
+
+.answer-btn {
+  display: block;
+  background: #4fd1c5;
+  border: none;
+  padding: 12px;
+  margin: 8px auto;
+  width: 100%;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.answer-btn:hover {
+  background: #38b2ac;
+}
+
+.answer-btn.correct {
+  background: #48bb78 !important;
+}
+
+.answer-btn.wrong {
+  background: #e53e3e !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.progress {
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.correct-animation {
+  animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   box-shadow: 0 0 0px #48bb78; }
+  50%  { transform: scale(1.05); box-shadow: 0 0 20px #48bb78; }
+  100% { transform: scale(1);   box-shadow: 0 0 0px #48bb78; }
+}
+
+/* Haus-Button */
+#home-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgb(0, 0, 0);
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.3s;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+#home-btn:hover {
+  transform: scale(1.1);
+  background: yellow;
+}
+
+/* Feuerwerk Canvas */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
