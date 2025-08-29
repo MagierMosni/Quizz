@@ -55,7 +55,7 @@ h1, h2 {
 #menu-btn:hover {
   transform: scale(1.05);
   background-image: linear-gradient(to right, #667eea, #764ba2);
-  color: yellow;
+  color: black;
 }
 
 #question-container {
