@@ -60,15 +60,28 @@ function showQuestion() {
 /* --------------------
    Antwort wählen
 --------------------- */
+/* --------------------
+   Antwort wählen
+--------------------- */
 function selectAnswer(i) {
   const question = currentQuiz.questions[currentQuestionIndex];
   const buttons = document.querySelectorAll(".answer-btn");
+
   buttons.forEach((btn, index) => {
     btn.disabled = true;
-    if (index === question.correct) {
+    if (i === question.correct && index === i) {
+      // richtige Antwort gewählt
       btn.classList.add("correct");
-    } else if (index === i) {
+    } else if (i !== question.correct && index === i) {
+      // falsche Auswahl bleibt rot
       btn.classList.add("wrong");
+    } else if (i !== question.correct && index === question.correct) {
+      // richtige Antwort wird einmal komplett grün
+      btn.classList.add("flash-green");
+      setTimeout(() => {
+        btn.classList.remove("flash-green");
+        btn.classList.add("correct-highlight"); // danach nur Umrandung
+      }, 800);
     }
   });
 
@@ -83,6 +96,8 @@ function selectAnswer(i) {
     document.getElementById("next-btn").classList.remove("hidden");
   }
 }
+
+
 
 /* --------------------
    Nächste Frage
