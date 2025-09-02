@@ -145,3 +145,35 @@ h1, h2 {
   pointer-events: none;
   z-index: 1;
 }
+
+.answer-btn.correct {
+  background: #48bb78 !important;
+  border: 2px solid #2f855a;
+}
+
+.answer-btn.correct-highlight {
+  border: 3px solid #48bb78; /* nur grün umrandet */
+}
+
+.answer-btn.wrong {
+  background: #e53e3e !important;
+  border: 2px solid #c53030;
+}
+
+/* Dauerhafte Markierung (Umrandung) */
+.answer-btn.correct-highlight {
+  border: 3px solid #48bb78;
+}
+
+/* Einmaliges komplettes Grün-Aufleuchten */
+.flash-green {
+  background: #48bb78 !important;
+  color: #fff;
+  animation: flashGreen 0.8s ease-in-out;
+}
+
+@keyframes flashGreen {
+  0%   { background: #4fd1c5; }
+  50%  { background: #48bb78; }
+  100% { background: #4fd1c5; }
+}
