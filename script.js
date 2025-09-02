@@ -10,9 +10,23 @@ let currentQuiz = null;
 let currentQuestionIndex = 0;
 let score = 0;
 
+/* --------------------
+   Quiz starten
+--------------------- */
 function startQuiz(quizKey) {
   stopFireworks();
-  currentQuiz = quizzes[quizKey];
+  const fullQuiz = quizzes[quizKey];
+
+  // Fragen mischen und 10 auswählen
+  const shuffled = shuffleArray([...fullQuiz.questions]);
+  const selectedQuestions = shuffled.slice(0, 10);
+
+  // Neues Quizobjekt mit nur 10 Fragen
+  currentQuiz = {
+    title: fullQuiz.title,
+    questions: selectedQuestions
+  };
+
   currentQuestionIndex = 0;
   score = 0;
   document.querySelector(".quiz-selection").classList.add("hidden");
@@ -21,6 +35,9 @@ function startQuiz(quizKey) {
   showQuestion();
 }
 
+/* --------------------
+   Fragen anzeigen
+--------------------- */
 function showQuestion() {
   const question = currentQuiz.questions[currentQuestionIndex];
   const container = document.getElementById("question-container");
@@ -40,6 +57,9 @@ function showQuestion() {
   document.getElementById("end-buttons").classList.add("hidden");
 }
 
+/* --------------------
+   Antwort wählen
+--------------------- */
 function selectAnswer(i) {
   const question = currentQuiz.questions[currentQuestionIndex];
   const buttons = document.querySelectorAll(".answer-btn");
@@ -64,6 +84,9 @@ function selectAnswer(i) {
   }
 }
 
+/* --------------------
+   Nächste Frage
+--------------------- */
 function nextQuestion() {
   currentQuestionIndex++;
   if (currentQuestionIndex < currentQuiz.questions.length) {
@@ -73,6 +96,9 @@ function nextQuestion() {
   }
 }
 
+/* --------------------
+   Ergebnis anzeigen
+--------------------- */
 function showResult() {
   const container = document.getElementById("question-container");
   document.getElementById("progress").textContent = "";
@@ -85,6 +111,9 @@ function showResult() {
   }
 }
 
+/* --------------------
+   Quiz neu starten
+--------------------- */
 function restartQuiz() {
   stopFireworks();
   currentQuestionIndex = 0;
@@ -96,6 +125,17 @@ function backToMenu() {
   stopFireworks();
   document.getElementById("quiz-container").classList.add("hidden");
   document.querySelector(".quiz-selection").classList.remove("hidden");
+}
+
+/* --------------------
+   Hilfsfunktion: Array mischen (Fisher-Yates)
+--------------------- */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 /* --------------------
