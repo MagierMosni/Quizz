@@ -177,3 +177,66 @@ h1, h2 {
   50%  { background: #48bb78; }
   100% { background: #4fd1c5; }
 }
+/* --------------------
+   Mobile Optimierung
+--------------------- */
+
+/* Für Bildschirme bis 600px Breite */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    width: 90%;       /* Container nicht zu breit */
+    max-width: 400px; /* maximale Breite auf kleinen Geräten */
+    min-width: 280px; /* minimale Breite für lesbaren Text */
+    margin: 20px auto; /* oben/unten 20px, zentriert */
+    font-size: 14px;  /* Text kleiner */
+    box-sizing: border-box;
+  }
+
+  .quiz-selection button,
+  #next-btn,
+  #restart-btn,
+  #menu-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .answer-btn {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  #home-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+/* Für Bildschirme bis 500px Breite: Buttons vertikal stapeln */
+@media (max-width: 500px) {
+  .quiz-selection button {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
+/* Für sehr kleine Bildschirme */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 22px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+
+/* Touch-Freundlichkeit */
+button {
+  touch-action: manipulation;
+}
